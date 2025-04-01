@@ -4,25 +4,21 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
-  images: { unoptimized: true },
+  output: 'export',
+  basePath: '/newOper-Dash',
+  assetPrefix: '/newOper-Dash/',
+  images: {
+    unoptimized: true,
+  },
+  // Configure static page generation
+  trailingSlash: true,
   webpack: (config, { isServer }) => {
     if (!isServer) {
-      // Don't resolve Node.js specific modules on the client
+      // Don't resolve 'fs' module on the client to prevent this error on build:
+      // https://github.com/vercel/next.js/issues/7755
       config.resolve.fallback = {
         fs: false,
-        net: false,
-        tls: false,
-        child_process: false,
-        util: false,
-        events: false,
-        process: false,
-        stream: false,
         path: false,
-        http: false,
-        https: false,
-        zlib: false,
-        crypto: false,
-        os: false,
       };
     }
     return config;
