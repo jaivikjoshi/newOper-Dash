@@ -4,8 +4,6 @@ import { NextResponse } from 'next/server';
 import { Notification } from '@/app/utils/types';
 import { mockNotifications } from './mock-data';
 
-export const dynamic = "force-dynamic";
-
 // Initialize auth client if credentials exist
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets'];
 const SHEET_ID = process.env.GOOGLE_SHEET_ID;

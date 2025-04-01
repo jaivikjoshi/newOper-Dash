@@ -12,6 +12,11 @@ const nextConfig = {
   },
   // Configure static page generation
   trailingSlash: true,
+  // Skip API routes when exporting
+  skipMiddlewareUrlNormalize: true,
+  experimental: {
+    appDir: true,
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       // Don't resolve 'fs' module on the client to prevent this error on build:
